@@ -43,6 +43,24 @@ public class SetExerciseApplication {
 	}
 	
 	public static Set<String> extractDataFromCSV(String fileName) {
+		String[][] handStringArray = new String[44][2];
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            // Count the number of lines in the file to determine the array size
+            int lineCount = br.lines().count();
+            preHandStringArray = new String[(int) lineCount][];
+
+            // Reset the BufferedReader to read from the beginning of the file
+            br.close();
+            br = new BufferedReader(new FileReader(filePath));
+
+            String line;
+            int row = 0;
+
+            while ((line = br.readLine()) != null) {
+                // Split the CSV line by commas
+                String[] values = line.split(",");
+
 
 		return null;
 	}
