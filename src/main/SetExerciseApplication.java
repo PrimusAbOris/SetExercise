@@ -47,8 +47,8 @@ public class SetExerciseApplication {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             // Count the number of lines in the file to determine the array size
-            int lineCount = br.lines().count();
-            preHandStringArray = new String[(int) lineCount][];
+            int lineCount = 0;
+            String[(int) lineCount][] preHandStringArray = new String[(int) lineCount][];
 
             // Reset the BufferedReader to read from the beginning of the file
             br.close();
@@ -57,10 +57,18 @@ public class SetExerciseApplication {
             String line;
             int row = 0;
 
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) { // for loop?
                 // Split the CSV line by commas
                 String[] values = line.split(",");
+                
+                preHandStringArray[row] = values; //might not need "middle array"
+                row++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        return dataArray;
 
 		return null;
 	}
